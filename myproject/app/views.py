@@ -1,8 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Post  # <--- 1. Import your model
 
 def home(request):
-    return HttpResponse("<h1>Hello! Welcome to my Django Site.</h1>")
+    # 2. Get all posts from the database
+    all_posts = Post.objects.all() 
+    
+    # 3. Create a context dictionary to pass data to the template
+    context = {
+        'posts': all_posts
+    }
+    
+    # 4. Pass the context as the third argument
+    return render(request, 'home.html', context)
 
 def about(request):
-    return HttpResponse("<h1>About Us</h1><p>This is a simple Django website.</p>")
+    return render(request, 'about.html')
