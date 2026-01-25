@@ -73,10 +73,18 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# config/settings.py
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'my_django_db',  # This will be the name of your MongoDB database
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            # If using Docker, use 'mongodb://mongo:27017'
+            # If running locally, use 'mongodb://localhost:27017'
+            'host': 'mongodb://mongo:27017', 
+        }
     }
 }
 

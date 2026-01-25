@@ -1,1 +1,5 @@
-pip freeze > requirements.txt
+django
+djongo
+pymongo==3.12.3
+# Note: Newer versions of Pymongo can sometimes conflict with Djongo,
+# so 3.12.x is often the safest bet for stability.
