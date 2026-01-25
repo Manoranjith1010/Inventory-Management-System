@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    # Map port 8000 on the host to 8000 in the container
+    ports:
+      - "8000:8000"
+    # Mount the directory so code changes apply instantly (hot-reload)
+    volumes:
+      - .:/app
+    command: python manage.py runserver 0.0.0.0:8000
